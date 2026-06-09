@@ -1,0 +1,4 @@
+__pycache__/
+.env
+signups.jsonl
+stripe_links.jsonl
