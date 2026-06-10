@@ -334,6 +334,57 @@ footer{background:var(--navy);color:rgba(255,255,255,.75)}
   .hd nav a{padding:0 13px}
   .hd nav a.hide-m{display:none}
 }
+
+/* ---- mobil (iPhone) ---- */
+@media(max-width:620px){
+  :root{--gut:16px}
+  /* header: brand-raekke + scrollbar nav-raekke */
+  .hd{height:auto;flex-wrap:wrap}
+  .hd .brand{padding:14px 16px;flex:1;border-right:0;font-size:17px}
+  .hd .cartb,.hd #acctBtn{padding:0 13px;font-size:10.5px}
+  .hd nav{order:3;width:100%;border-top:1px solid var(--rule);overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .hd nav a,.hd nav a.hide-m{display:flex;padding:12px 14px;border-left:0;border-right:1px solid var(--rule);white-space:nowrap}
+  .sec-tag span:last-child{display:none}
+  .sec-tag{padding:8px 16px}
+  /* hero */
+  .hero h1{font-size:37px}
+  .hero .left{gap:28px}
+  #top .btn{width:100%;justify-content:space-between;margin-bottom:10px}
+  .hero .specline{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .hero .specline div{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .hero .specline div:nth-child(2n){border-right:0}
+  .hero .specline div:nth-child(n+3){border-bottom:0}
+  .hero .specline b{font-size:18px}
+  /* instrument */
+  .inst{padding:28px 16px}
+  .readout .val{font-size:34px}
+  .readout .verdict{text-align:left;max-width:none}
+  .gauge-wrap{padding:18px 12px 12px}
+  /* iOS: inputs under 16px udloeser auto-zoom */
+  .zipform input,.fld input,.acct-body input{font-size:16px}
+  /* katalog */
+  .row-head{grid-template-columns:48px 1fr 84px 44px;gap:8px;min-height:72px}
+  .row-head .th{margin-left:12px;width:48px;height:48px}
+  .row-head h3{font-size:15px}
+  .row-head .pr{font-size:12px}
+  .row-head .pr small{display:none}
+  .row .add{width:36px;height:36px}
+  .row.open .row-body{padding:20px 16px 24px 16px}
+  /* dokumentation & form */
+  .doss .cell{padding:28px 16px}
+  .schem{padding:28px 16px}
+  .book .info,.book form{padding:28px 16px}
+  .steps div{font-size:13.5px}
+  /* kurv som fuld bredde */
+  .drawer{width:100%;max-width:100vw;border-left:0}
+  .cl{grid-template-columns:48px 1fr auto;padding:12px 16px}
+  .cl .ci{width:48px;height:48px}
+  .sug{margin:10px 16px}
+  /* footer */
+  .colophon{grid-template-columns:1fr}
+  .colophon>div{border-right:0;padding:24px 16px 26px}
+  .baseline{flex-direction:column;gap:4px;align-items:flex-start}
+}
 </style>
 </head>
 <body>
