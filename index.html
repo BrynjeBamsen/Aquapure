@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AquaPure — Schweizisk vandteknik til danske hjem</title>
+<meta name="description" content="Dansk distributør af EVODROP. Tjek dit vands hårdhed, og se det schweiziske system der fjerner kalk og 614+ stoffer — uden salt, strøm eller spildevand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Schibsted+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#062336;          /* EVODROP deep navy = ink */
+  --navy-2:#0B3550;
+  --aqua:#19C2D8;          /* brand aqua */
+  --aqua-deep:#0E8FA3;     /* AA-safe aqua for text/lines on light */
+  --aqua-bright:#3FE3F2;   /* highlights on dark */
+  --glacial:#EDF6F9;       /* light panel */
+  --bg:#FAFDFE;
+  --ink-60:rgba(6,35,54,.66);
+  --ink-30:rgba(6,35,54,.36);
+  --rule:rgba(6,35,54,.16);
+  --rule-soft:rgba(6,35,54,.08);
+  --warn:#E2574C;          /* hard-water warning only */
+  --mono:'IBM Plex Mono',monospace;
+  --grot:'Schibsted Grotesk',sans-serif;
+  --disp:'Archivo',sans-serif;
+  --gut:clamp(20px,4vw,56px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--grot);background:var(--bg);color:var(--navy);
+  line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--aqua);color:var(--navy)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+img{display:block;max-width:100%}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.disp{font-family:var(--disp);font-stretch:115%;font-weight:800;letter-spacing:-.015em;line-height:.95;text-transform:uppercase}
+
+/* ---- sheet frame ---- */
+.sheet{max-width:1340px;margin:0 auto;border-left:1px solid var(--rule);border-right:1px solid var(--rule);min-height:100vh;position:relative;background:var(--bg)}
+section{border-bottom:1px solid var(--rule);position:relative}
+.sec-tag{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px var(--gut);border-bottom:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-60);gap:12px;
+}
+.sec-tag .dot{display:inline-block;width:7px;height:7px;background:var(--aqua);margin-right:9px;vertical-align:1px}
+
+/* ---- header ---- */
+header{position:sticky;top:0;z-index:60;background:var(--bg);border-bottom:1px solid var(--rule)}
+.hd{display:flex;align-items:stretch;justify-content:space-between;height:58px}
+.hd .brand{display:flex;align-items:center;gap:12px;padding:0 var(--gut);border-right:1px solid var(--rule);font-family:var(--disp);font-stretch:120%;font-weight:900;font-size:19px;letter-spacing:.01em;text-transform:uppercase}
+.hd .brand .sq{width:13px;height:13px;background:var(--aqua);flex:none}
+.hd nav{display:flex;align-items:stretch}
+.hd nav a{
+  display:flex;align-items:center;padding:0 22px;border-left:1px solid var(--rule);
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60);
+  transition:background .15s,color .15s;
+}
+.hd nav a:hover{background:var(--navy);color:#fff}
+.hd .cartb{
+  display:flex;align-items:center;gap:9px;padding:0 var(--gut);border:0;border-left:1px solid var(--rule);
+  background:none;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);
+  transition:background .15s,color .15s;
+}
+.hd .cartb:hover{background:var(--aqua);color:var(--navy)}
+.hd .cartb .n{font-weight:500;color:var(--aqua-deep)}
+.hd .cartb:hover .n{color:var(--navy)}
+
+/* ---- hero ---- */
+.hero{display:grid;grid-template-columns:1.05fr .95fr}
+.hero .left{padding:clamp(40px,6vw,84px) var(--gut);border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:space-between;gap:44px}
+.hero h1{font-size:clamp(42px,5.4vw,82px)}
+.hero h1 .ln{display:block}
+.hero h1 .aq{color:var(--aqua-deep)}
+.hero .sub{max-width:46ch;font-size:16.5px;color:var(--ink-60);margin-top:22px}
+.hero .specline{display:flex;border:1px solid var(--rule);width:max-content;max-width:100%;flex-wrap:wrap;background:#fff}
+.hero .specline div{padding:12px 18px;border-right:1px solid var(--rule)}
+.hero .specline div:last-child{border-right:0}
+.hero .specline b{display:block;font-family:var(--disp);font-stretch:110%;font-weight:800;font-size:21px;color:var(--aqua-deep)}
+.hero .specline span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-60)}
+
+/* ---- instrument (dark device panel) ---- */
+.inst{padding:clamp(40px,6vw,80px) var(--gut);background:var(--navy);color:#fff;display:flex;flex-direction:column;gap:24px;justify-content:center}
+.inst .lab{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);display:flex;justify-content:space-between;gap:10px}
+.inst .lab .live{color:var(--aqua-bright)}
+.gauge-wrap{border:1px solid rgba(255,255,255,.2);background:var(--navy-2);padding:26px 22px 18px}
+.gauge{width:100%;max-width:430px;margin:0 auto;display:block}
+.g-needle{stroke:var(--aqua-bright);stroke-width:3;stroke-linecap:round;
+  transform-origin:210px 205px;transition:transform 1.1s cubic-bezier(.3,1.3,.35,1)}
+.readout{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;margin-top:6px;gap:14px;flex-wrap:wrap}
+.readout .val{font-family:var(--disp);font-stretch:110%;font-weight:900;font-size:46px;line-height:1;color:#fff}
+.readout .val small{font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:.06em;color:rgba(255,255,255,.6);text-transform:none}
+.readout .verdict{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-align:right;color:rgba(255,255,255,.6);max-width:210px}
+.readout .verdict b{display:block;font-size:13px;color:var(--aqua-bright)}
+.readout .verdict b.hard{color:#FF8A7E}
+.zipform{display:flex;border:1px solid var(--aqua-bright)}
+.zipform input{
+  flex:1;border:0;background:var(--navy-2);padding:15px 16px;font-family:var(--mono);font-size:15px;color:#fff;min-width:0;
+}
+.zipform input::placeholder{color:rgba(255,255,255,.4)}
+.zipform input:focus{outline:2px solid var(--aqua-bright);outline-offset:-2px}
+.zipform button{
+  border:0;background:var(--aqua-bright);color:var(--navy);padding:0 24px;font-weight:500;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;transition:background .15s;
+}
+.zipform button:hover{background:#fff}
+.inst .note{font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,.4);letter-spacing:.04em}
+
+/* ---- buttons ---- */
+.btn{
+  display:inline-flex;align-items:center;gap:12px;border:1px solid var(--navy);background:var(--navy);color:#fff;
+  padding:15px 26px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;transition:.15s;
+}
+.btn:hover{background:var(--aqua-deep);border-color:var(--aqua-deep)}
+.btn.ghost{background:transparent;color:var(--navy)}
+.btn.ghost:hover{background:var(--navy);color:#fff}
+.btn .arr{transition:transform .2s}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* ---- schematic ---- */
+.schem{padding:clamp(40px,5vw,72px) var(--gut)}
+.schem h2{font-size:clamp(30px,3.6vw,52px);max-width:18ch;margin-bottom:8px}
+.schem .intro{color:var(--ink-60);max-width:54ch;margin-bottom:42px}
+.flow{border:1px solid var(--rule);background:#fff;padding:30px clamp(16px,3vw,40px);overflow-x:auto}
+.flow svg{min-width:760px;width:100%;display:block}
+.f-pipe{stroke:var(--rule);stroke-width:1.5;fill:none}
+.f-water{stroke:var(--aqua);stroke-width:2.5;fill:none;stroke-dasharray:7 9;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-32}}
+.f-box{fill:var(--glacial);stroke:var(--navy);stroke-width:1.5}
+.f-name{font-family:var(--disp);font-weight:800;font-size:14px;text-transform:uppercase;fill:var(--navy)}
+.f-spec{font-family:var(--mono);font-size:10px;fill:var(--ink-60);letter-spacing:.04em}
+.f-stage{font-family:var(--mono);font-size:10px;fill:var(--aqua-deep);letter-spacing:.1em}
+.f-end{font-family:var(--mono);font-size:11px;fill:var(--navy);letter-spacing:.08em}
+.legend{display:flex;gap:26px;margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-60);flex-wrap:wrap}
+.legend i{display:inline-block;width:22px;height:0;border-top:2.5px dashed var(--aqua);margin-right:8px;vertical-align:3px}
+.legend i.s{border-top:1.5px solid var(--rule)}
+/* product photo strip under schematic */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);border-top:0;background:#fff}
+.stage{border-right:1px solid var(--rule);padding:20px;display:flex;gap:18px;align-items:center;transition:background .15s;cursor:pointer}
+.stage:last-child{border-right:0}
+.stage:hover{background:var(--glacial)}
+.stage .img{width:92px;height:92px;flex:none;background:#fff;border:1px solid var(--rule-soft);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage .img img{width:100%;height:100%;object-fit:contain;padding:6px}
+.stage .t .st{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--aqua-deep)}
+.stage .t h4{font-family:var(--disp);font-stretch:112%;font-weight:800;font-size:17px;text-transform:uppercase;margin:3px 0 4px}
+.stage .t span{font-family:var(--mono);font-size:10.5px;color:var(--ink-60);letter-spacing:.04em}
+@media(max-width:880px){.stages{grid-template-columns:1fr}.stage{border-right:0;border-bottom:1px solid var(--rule)}.stage:last-child{border-bottom:0}}
+
+/* ---- catalogue ---- */
+.cat .tabs{display:flex;border-bottom:1px solid var(--rule);overflow-x:auto;background:#fff}
+.cat .tab{
+  border:0;background:none;padding:15px 24px;border-right:1px solid var(--rule);
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60);white-space:nowrap;transition:.15s;
+}
+.cat .tab:hover{color:var(--navy)}
+.cat .tab.active{background:var(--navy);color:#fff}
+.row{border-bottom:1px solid var(--rule);transition:background .15s;background:var(--bg)}
+.row:last-child{border-bottom:0}
+.row-head{
+  display:grid;grid-template-columns:64px 84px 1.2fr .9fr .75fr 110px 64px;align-items:center;gap:14px;
+  padding:10px var(--gut) 10px 0;cursor:pointer;min-height:84px;
+}
+.row-head .idx{font-family:var(--mono);font-size:11px;color:var(--ink-30);border-right:1px solid var(--rule-soft);align-self:stretch;display:flex;align-items:center;justify-content:center}
+.row-head .th{width:72px;height:72px;background:#fff;border:1px solid var(--rule-soft);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.row-head .th img{width:100%;height:100%;object-fit:contain;padding:4px}
+.row-head .th span{font-family:var(--mono);font-size:9px;color:var(--ink-30);text-transform:uppercase;letter-spacing:.06em}
+.row-head h3{font-family:var(--disp);font-stretch:112%;font-weight:800;font-size:19px;text-transform:uppercase}
+.row-head .spec,.row-head .catg{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink-60);text-transform:uppercase}
+.row-head .pr{font-family:var(--mono);font-size:14px;text-align:right}
+.row-head .pr small{display:block;font-size:9.5px;color:var(--ink-30);letter-spacing:.06em}
+.row .add{
+  width:40px;height:40px;border:1px solid var(--navy);background:none;color:var(--navy);
+  font-size:18px;line-height:1;justify-self:end;transition:.15s;
+}
+.row .add:hover{background:var(--aqua);border-color:var(--aqua);color:var(--navy)}
+.row:hover{background:#fff}
+.row.open{background:#fff}
+.row-body{display:none;border-top:1px dashed var(--rule);padding:26px var(--gut) 30px calc(64px + 14px)}
+.row.open .row-body{display:grid;grid-template-columns:230px 1fr;gap:30px;align-items:start}
+.row-body .ph{border:1px solid var(--rule);background:#fff;aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.row-body .ph img{width:100%;height:100%;object-fit:contain;padding:12px}
+.row-body .ph .fb{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink-30);text-transform:uppercase;text-align:center;padding:10px}
+.row-body p{color:var(--ink-60);max-width:54ch;margin-bottom:16px}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border:1px solid var(--rule-soft);background:var(--glacial)}
+.specs div{padding:10px 14px;border-right:1px solid var(--rule-soft);font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-60)}
+.specs div:last-child{border-right:0}
+.specs b{display:block;color:var(--navy);font-size:12px;margin-top:2px}
+@media(max-width:880px){
+  .row-head{grid-template-columns:56px 1fr 96px 50px;gap:10px}
+  .row-head .idx,.row-head .spec,.row-head .catg{display:none}
+  .row-head .th{margin-left:14px;width:56px;height:56px}
+  .row.open .row-body{grid-template-columns:1fr;padding-left:var(--gut)}
+}
+
+/* ---- documentation ---- */
+.doss{display:grid;grid-template-columns:1fr 1fr 1fr}
+.doss .cell{padding:clamp(36px,4.5vw,60px) var(--gut);border-right:1px solid var(--rule)}
+.doss .cell:last-child{border-right:0;padding:0;position:relative;min-height:340px}
+.doss h2{font-size:clamp(26px,2.8vw,38px);margin-bottom:26px;max-width:16ch}
+.dl{border-top:1px solid var(--rule)}
+.dl div{display:flex;justify-content:space-between;gap:18px;padding:13px 2px;border-bottom:1px solid var(--rule);align-items:baseline}
+.dl span{font-size:14.5px;color:var(--ink-60)}
+.dl b{font-family:var(--mono);font-size:13px;white-space:nowrap}
+.dl b.w{color:var(--aqua-deep)}
+.doss .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.doss .cap{position:absolute;left:0;bottom:0;right:0;background:rgba(6,35,54,.82);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px;display:flex;justify-content:space-between;gap:10px}
+@media(max-width:980px){.doss{grid-template-columns:1fr 1fr}.doss .cell:last-child{grid-column:1/-1;min-height:280px}}
+@media(max-width:680px){.doss{grid-template-columns:1fr}.doss .cell{border-right:0;border-bottom:1px solid var(--rule)}}
+
+/* ---- signup ---- */
+.book{display:grid;grid-template-columns:1fr 1fr}
+.book .info{padding:clamp(40px,5vw,72px) var(--gut);border-right:1px solid var(--rule)}
+.book h2{font-size:clamp(32px,4vw,56px);max-width:14ch}
+.book .info p{color:var(--ink-60);max-width:44ch;margin-top:20px}
+.steps{margin-top:34px;border-top:1px solid var(--rule)}
+.steps div{display:flex;gap:16px;padding:14px 2px;border-bottom:1px solid var(--rule);font-size:14.5px}
+.steps i{font-family:var(--mono);font-style:normal;font-size:11px;color:var(--aqua-deep);padding-top:3px}
+.book form{padding:clamp(40px,5vw,72px) var(--gut);display:flex;flex-direction:column;background:var(--glacial)}
+.fld{display:flex;flex-direction:column;border:1px solid var(--navy);border-bottom:0;background:#fff}
+.fld:first-of-type{border-top:1px solid var(--navy)}
+.fld label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60);padding:10px 14px 0}
+.fld input{border:0;background:transparent;padding:6px 14px 12px;font-family:var(--grot);font-size:16px;color:var(--navy)}
+.fld input:focus{outline:2px solid var(--aqua-deep);outline-offset:-2px}
+.book form .btn{justify-content:space-between;width:100%}
+.fmsg{font-family:var(--mono);font-size:12px;letter-spacing:.04em;min-height:20px;margin-top:14px}
+.fmsg.ok{color:var(--aqua-deep)}
+.fmsg.err{color:var(--warn)}
+.consent{font-family:var(--mono);font-size:10px;color:var(--ink-30);margin-top:10px;letter-spacing:.03em;line-height:1.6}
+@media(max-width:880px){.book{grid-template-columns:1fr}.book .info{border-right:0;border-bottom:1px solid var(--rule)}}
+
+/* ---- footer ---- */
+footer{background:var(--navy);color:rgba(255,255,255,.75)}
+.colophon{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr}
+.colophon>div{padding:34px var(--gut) 40px;border-right:1px solid rgba(255,255,255,.12)}
+.colophon>div:last-child{border-right:0}
+.colophon .brand{font-family:var(--disp);font-stretch:120%;font-weight:900;font-size:18px;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px;color:#fff}
+.colophon .brand .sq{width:11px;height:11px;background:var(--aqua)}
+.colophon p{font-size:13.5px;max-width:30ch}
+.colophon h5{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:14px}
+.colophon a{display:block;font-size:13.5px;padding:3px 0;transition:color .15s}
+.colophon a:hover{color:var(--aqua-bright)}
+.baseline{border-top:1px solid rgba(255,255,255,.12);padding:14px var(--gut);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+@media(max-width:880px){.colophon{grid-template-columns:1fr 1fr}.colophon>div{border-bottom:1px solid rgba(255,255,255,.12)}}
+
+/* ---- cart drawer ---- */
+.overlay{position:fixed;inset:0;background:rgba(6,35,54,.4);opacity:0;visibility:hidden;transition:.3s;z-index:90}
+.overlay.open{opacity:1;visibility:visible}
+.drawer{
+  position:fixed;top:0;right:0;width:440px;max-width:92vw;height:100%;background:var(--bg);z-index:100;
+  border-left:1px solid var(--navy);transform:translateX(101%);transition:transform .4s cubic-bezier(.6,.05,.2,1);
+  display:flex;flex-direction:column;
+}
+.drawer.open{transform:none}
+.dr-head{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--rule)}
+.dr-head h3{font-family:var(--disp);font-stretch:112%;font-weight:800;font-size:17px;text-transform:uppercase}
+.dr-head .close{border:1px solid var(--navy);background:none;width:36px;height:36px;font-size:16px;transition:.15s}
+.dr-head .close:hover{background:var(--navy);color:#fff}
+.dr-body{flex:1;overflow-y:auto}
+.empty{padding:60px 24px;text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-30)}
+.cl{display:grid;grid-template-columns:56px 1fr auto;gap:6px 14px;padding:14px 24px;border-bottom:1px solid var(--rule);align-items:center}
+.cl .ci{width:56px;height:56px;border:1px solid var(--rule-soft);background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;grid-row:span 2}
+.cl .ci img{width:100%;height:100%;object-fit:contain;padding:3px}
+.cl h4{font-family:var(--disp);font-stretch:110%;font-weight:800;font-size:14.5px;text-transform:uppercase}
+.cl .p{font-family:var(--mono);font-size:12.5px;text-align:right}
+.cl .q{display:flex;align-items:center;gap:12px}
+.cl .q button{width:26px;height:26px;border:1px solid var(--rule);background:none;font-size:14px;transition:.15s}
+.cl .q button:hover{border-color:var(--navy)}
+.cl .q .n{font-family:var(--mono);font-size:12px;min-width:16px;text-align:center}
+.cl .rm{border:0;background:none;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-30);justify-self:end;transition:.15s}
+.cl .rm:hover{color:var(--warn)}
+.dr-foot{border-top:1px solid var(--navy);padding:20px 24px}
+.sumr{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-60);padding:4px 0}
+.sumr.tot{color:var(--navy);font-size:14px;padding:12px 0 16px}
+.sumr.tot b{font-family:var(--disp);font-stretch:110%;font-size:22px}
+.dr-foot .btn{width:100%;justify-content:space-between}
+.dr-foot .note{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:var(--ink-30);text-align:center;margin-top:12px;text-transform:uppercase}
+
+/* ---- modal ---- */
+.modal-ov{position:fixed;inset:0;background:rgba(6,35,54,.5);display:flex;align-items:center;justify-content:center;z-index:120;opacity:0;visibility:hidden;transition:.25s;padding:20px}
+.modal-ov.open{opacity:1;visibility:visible}
+.modal{background:var(--bg);border:1px solid var(--navy);max-width:440px;width:100%;padding:34px}
+.modal h3{font-family:var(--disp);font-stretch:112%;font-weight:800;font-size:20px;text-transform:uppercase;margin-bottom:14px}
+.modal p{color:var(--ink-60);font-size:14.5px;margin-bottom:10px}
+.modal code{font-family:var(--mono);font-size:12px;background:var(--glacial);padding:2px 7px}
+.modal .btn{margin-top:18px}
+
+/* ---- cart subscription suggestion ---- */
+.sug{border:1px dashed var(--aqua-deep);background:var(--glacial);margin:10px 24px;padding:14px}
+.sug .t{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.sug .t b{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--aqua-deep)}
+.sug h5{font-family:var(--disp);font-stretch:110%;font-weight:800;font-size:14px;text-transform:uppercase;margin:6px 0 3px}
+.sug p{font-size:12.5px;color:var(--ink-60);margin-bottom:10px}
+.sug .pr{font-family:var(--mono);font-size:12px}
+.sug button{width:100%;border:1px solid var(--aqua-deep);background:none;color:var(--aqua-deep);
+  padding:9px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;transition:.15s}
+.sug button:hover{background:var(--aqua-deep);color:#fff}
+.sug.added{border-style:solid;border-color:var(--navy);background:#fff}
+.sug.added button{border-color:var(--navy);color:var(--navy)}
+.sug.added button:hover{background:var(--navy);color:#fff}
+.cl.subline h4{color:var(--aqua-deep)}
+.cl.subline .p small{display:block;font-size:9px;color:var(--ink-30)}
+
+/* ---- auth / account ---- */
+.acct-modal{background:var(--bg);border:1px solid var(--navy);max-width:420px;width:100%;padding:0}
+.acct-tabs{display:flex;border-bottom:1px solid var(--rule)}
+.acct-tabs button{flex:1;border:0;background:none;padding:14px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60)}
+.acct-tabs button.active{background:var(--navy);color:#fff}
+.acct-body{padding:26px}
+.acct-body .btn{width:100%;justify-content:space-between;margin-top:14px}
+.amsg{font-family:var(--mono);font-size:11.5px;min-height:18px;margin-top:12px;letter-spacing:.04em}
+.amsg.err{color:var(--warn)}.amsg.ok{color:var(--aqua-deep)}
+.subrow{border:1px solid var(--rule);padding:14px;margin-bottom:10px;background:#fff}
+.subrow .st{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
+.subrow .st.active{color:var(--aqua-deep)}.subrow .st.off{color:var(--warn)}
+.subrow h5{font-family:var(--disp);font-stretch:110%;font-weight:800;font-size:14px;text-transform:uppercase;margin:4px 0}
+.subrow span{font-family:var(--mono);font-size:11px;color:var(--ink-60)}
+
+/* ---- reveal & a11y ---- */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+:focus-visible{outline:2px solid var(--aqua-deep);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+@media(max-width:880px){
+  .hero{grid-template-columns:1fr}
+  .hero .left{border-right:0;border-bottom:1px solid var(--rule)}
+  .hd nav a{padding:0 13px}
+  .hd nav a.hide-m{display:none}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<header>
+  <div class="hd">
+    <a href="#top" class="brand"><span class="sq"></span>AquaPure</a>
+    <nav>
+      <a href="#system" class="hide-m">Systemet</a>
+      <a href="#katalog">Katalog</a>
+      <a href="#dok" class="hide-m">Dokumentation</a>
+      <a href="#book">Vandanalyse</a>
+    </nav>
+    <div style="display:flex;align-items:stretch">
+      <button class="cartb" id="acctBtn" onclick="openAccount()" style="border-left:1px solid var(--rule)">Log ind</button>
+      <button class="cartb" onclick="openCart()">Kurv <span class="n" id="cartCount">0</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- 00 · INSTRUMENT -->
+<section id="top">
+  <div class="sec-tag"><span><span class="dot"></span>AquaPure · Datablad nr. 001</span><span>EVODROP · Dansk distributør · Swiss Made 🇨🇭</span></div>
+  <div class="hero">
+    <div class="left">
+      <div>
+        <h1 class="disp">
+          <span class="ln">Danmark har noget</span>
+          <span class="ln">af Europas</span>
+          <span class="ln aq">hårdeste vand.</span>
+        </h1>
+        <p class="sub">Kalk sætter sig i rør, varmelegemer og elkedler — og ledningsvand kan indeholde rester af pesticider, PFAS og mikroplast. AquaPure leverer EVODROPs schweiziske filtersystemer, der løser begge dele. Uden salt, strøm eller spildevand.</p>
+      </div>
+      <div>
+        <div style="display:flex;flex-wrap:wrap;margin-bottom:30px">
+          <a class="btn" href="#katalog">Se katalog <span class="arr">→</span></a>
+          <a class="btn ghost" href="#book">Book gratis vandanalyse</a>
+        </div>
+        <div class="specline">
+          <div><b>94,2 %</b><span>kalkreduktion</span></div>
+          <div><b>614+</b><span>filtrerede stoffer</span></div>
+          <div><b>1:1</b><span>spildevandsforhold</span></div>
+          <div><b>20 år</b><span>garanti</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="inst">
+      <div class="lab"><span>Instrument 01 — Vandhårdhed</span><span class="live">● Live aflæsning</span></div>
+      <div class="gauge-wrap">
+        <svg class="gauge" id="gaugeSvg" viewBox="0 0 420 250" role="img" aria-label="Måler der viser vandets hårdhed i grader deutscher Härte"></svg>
+        <div class="readout">
+          <div class="val"><span id="dhVal">—</span><small> °dH · <span id="dhArea">Indtast postnummer</span></small></div>
+          <div class="verdict"><b id="dhVerdict">Afventer</b><span id="dhNote">Tjek dit lokale vand</span></div>
+        </div>
+      </div>
+      <div class="zipform">
+        <input id="zipIn" inputmode="numeric" maxlength="4" placeholder="Dit postnummer — fx 4000" aria-label="Postnummer">
+        <button onclick="readZip()">Aflæs</button>
+      </div>
+      <div class="note">Vejledende værdier baseret på regionale gennemsnit. Se dit vandværks seneste analyse for præcise tal.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 · SYSTEM -->
+<section id="system">
+  <div class="sec-tag"><span><span class="dot"></span>01 — Systemet</span><span>Orbital Osmosis® · 25 patenter</span></div>
+  <div class="schem">
+    <h2 class="disp rv">Fra råvand til drikkevand i tre trin</h2>
+    <p class="intro rv">Hvert modul løser én opgave og kan kombineres efter dit vand og dit hus. Hele kæden er testet i uafhængige laboratorier og bygget i V4A rustfrit stål.</p>
+    <div class="flow rv">
+      <svg viewBox="0 0 980 270" role="img" aria-label="Diagram over vandets vej gennem filtersystemet">
+        <path class="f-pipe" d="M 20 135 H 130 M 330 135 H 400 M 600 135 H 670 M 870 135 H 960"/>
+        <path class="f-water" d="M 20 135 H 130 M 330 135 H 400 M 600 135 H 670 M 870 135 H 960"/>
+        <text class="f-end" x="20" y="118">RÅVAND</text>
+        <text class="f-spec" x="20" y="160">~20 °dH · klor · PFAS</text>
+        <rect class="f-box" x="130" y="70" width="200" height="130"/>
+        <text class="f-stage" x="146" y="96">TRIN 1 / HELE HUSET</text>
+        <text class="f-name" x="146" y="122">EVOdescale</text>
+        <text class="f-spec" x="146" y="146">Kalkbeskyttelse op til 94,2 %</text>
+        <text class="f-spec" x="146" y="164">Uden salt · uden strøm</text>
+        <rect class="f-box" x="400" y="70" width="200" height="130"/>
+        <text class="f-stage" x="416" y="96">TRIN 2 / HELE HUSET</text>
+        <text class="f-name" x="416" y="122">EVOadsorb</text>
+        <text class="f-spec" x="416" y="146">Nanofiltrering: PFAS, klor,</text>
+        <text class="f-spec" x="416" y="164">mikroplast, medicinrester</text>
+        <rect class="f-box" x="670" y="70" width="200" height="130"/>
+        <text class="f-stage" x="686" y="96">TRIN 3 / KØKKENET</text>
+        <text class="f-name" x="686" y="122">EVOfilter</text>
+        <text class="f-spec" x="686" y="146">Orbital Osmosis® 99,9 %</text>
+        <text class="f-spec" x="686" y="164">614+ stoffer · 1:1 spildevand</text>
+        <text class="f-end" x="888" y="118">DRIKKEVAND</text>
+        <text class="f-spec" x="888" y="160">99,9 % renhed</text>
+        <path class="f-pipe" d="M 130 232 H 870 M 130 226 V 238 M 870 226 V 238"/>
+        <text class="f-spec" x="468" y="252">ÉT SAMLET SYSTEM · 20 ÅRS GARANTI</text>
+      </svg>
+    </div>
+    <div class="stages rv" id="stageStrip"></div>
+    <div class="legend rv"><span><i></i>Vandets vej</span><span><i class="s"></i>Reference</span><span>Modulerne kan købes enkeltvis</span></div>
+  </div>
+</section>
+
+<!-- 02 · KATALOG -->
+<section id="katalog">
+  <div class="sec-tag"><span><span class="dot"></span>02 — Katalog</span><span>Priser inkl. moms · Fri fragt i DK</span></div>
+  <div class="cat">
+    <div class="tabs" id="filters">
+      <button class="tab active" data-cat="all">Alle (17)</button>
+      <button class="tab" data-cat="drikkevand">Drikkevand</button>
+      <button class="tab" data-cat="husvand">Husvand</button>
+      <button class="tab" data-cat="reservefiltre">Reservefiltre</button>
+      <button class="tab" data-cat="tilbehor">Tilbehør</button>
+      <button class="tab" data-cat="vandhaner">Vandhaner</button>
+    </div>
+    <div id="products"></div>
+  </div>
+</section>
+
+<!-- 03 · DOKUMENTATION -->
+<section id="dok">
+  <div class="sec-tag"><span><span class="dot"></span>03 — Dokumentation</span><span>Uafhængigt verificeret</span></div>
+  <div class="doss">
+    <div class="cell rv">
+      <h2 class="disp">Tal, ikke tillægsord</h2>
+      <div class="dl">
+        <div><span>Effektiv filtrering</span><b class="w">99,9 %</b></div>
+        <div><span>Kalkbeskyttelse uden salt</span><b class="w">94,2 %</b></div>
+        <div><span>Spildevand pr. liter</span><b class="w">1 : 1</b></div>
+        <div><span>Membranlevetid</span><b>10.000 L / 5 år</b></div>
+        <div><span>Producentgaranti</span><b>20 år</b></div>
+      </div>
+    </div>
+    <div class="cell rv">
+      <h2 class="disp">Verificeret af</h2>
+      <div class="dl">
+        <div><span>Patenter, 6 familier</span><b>25</b></div>
+        <div><span>Uafhængige studier</span><b>30+</b></div>
+        <div><span>Materiale</span><b>V4A stål</b></div>
+        <div><span>Kunder globalt</span><b>30.000+</b></div>
+        <div><span>Produktion</span><b>Schweiz 🇨🇭</b></div>
+      </div>
+    </div>
+    <div class="cell rv">
+      <img class="photo" src="https://evodrop.eu/cdn/shop/files/Trinkwassersysteme_EVOfilter_premium.jpg?v=1741098235&width=1360" alt="EVOfilter premium installeret under køkkenvask" onerror="this.parentElement.style.background='var(--glacial)'">
+      <div class="cap"><span>Fig. 03 — EVOfilter premium</span><span>Installeret · Køkken</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · VANDANALYSE -->
+<section id="book">
+  <div class="sec-tag"><span><span class="dot"></span>04 — Vandanalyse</span><span>Gratis · Uforpligtende · Svar &lt; 24 t</span></div>
+  <div class="book">
+    <div class="info">
+      <h2 class="disp rv">Dit vand. Din løsning.</h2>
+      <p class="rv">Vand er ikke ens fra by til by. Send dit postnummer, så gennemgår vi dit vandværks seneste analyse og anbefaler præcis de moduler, dit hjem har brug for — hverken mere eller mindre.</p>
+      <div class="steps rv">
+        <div><i>A</i><span>Vi slår dit lokale vands hårdhed og analyse op</span></div>
+        <div><i>B</i><span>Du får en konkret anbefaling med priser</span></div>
+        <div><i>C</i><span>Installation aftales kun, hvis du ønsker det</span></div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault();submitSignup()">
+      <div class="fld"><label for="suName">Navn</label><input id="suName" type="text" autocomplete="name"></div>
+      <div class="fld"><label for="suEmail">E-mail</label><input id="suEmail" type="email" autocomplete="email"></div>
+      <div class="fld"><label for="suZip">Postnummer</label><input id="suZip" inputmode="numeric" maxlength="4" autocomplete="postal-code"></div>
+      <button class="btn" type="submit">Bestil vandanalyse <span class="arr">→</span></button>
+      <div class="fmsg" id="suMsg" aria-live="polite"></div>
+      <p class="consent">Vi bruger kun dine oplysninger til at lave din vandanalyse og kontakte dig om den. Afmeld når som helst.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="colophon">
+    <div>
+      <div class="brand"><span class="sq"></span>AquaPure</div>
+      <p>Dansk distributør af EVODROP — schweizisk vandteknik til hjem og erhverv.</p>
+    </div>
+    <div><h5>Katalog</h5><a href="#katalog">Drikkevand</a><a href="#katalog">Husvand</a><a href="#katalog">Reservefiltre</a><a href="#katalog">Vandhaner</a><a href="#katalog">Tilbehør</a></div>
+    <div><h5>Dokumentation</h5><a href="#system">Systemet</a><a href="#dok">Testresultater</a><a href="#book">Vandanalyse</a></div>
+    <div><h5>Kontakt</h5><a href="mailto:info@aquapure.dk">info@aquapure.dk</a><a href="#">Handelsbetingelser</a><a href="#">Privatliv</a><a href="#">Returret</a></div>
+  </div>
+  <div class="baseline">
+    <span>© 2026 AquaPure ApS · CVR xxxxxxxx</span>
+    <span>Blad 001 · Rev. 3.0</span>
+    <span>Swiss engineered 🇨🇭 · Dansk distribueret</span>
+  </div>
+</footer>
+
+</div><!-- /sheet -->
+
+<!-- CART -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="Kurv">
+  <div class="dr-head"><h3>Kurv</h3><button class="close" onclick="closeCart()" aria-label="Luk kurv">×</button></div>
+  <div class="dr-body" id="drawerBody"></div>
+  <div class="dr-foot" id="drawerFoot" style="display:none">
+    <div id="sumArea"></div>
+    <button class="btn" onclick="checkout()">Til kassen <span class="arr">→</span></button>
+    <p class="note">Sikker betaling via Stripe · Kort / MobilePay / Apple Pay</p>
+  </div>
+</aside>
+
+<!-- CHECKOUT INFO MODAL (preview only) -->
+<div class="modal-ov" id="modalOv">
+  <div class="modal">
+    <h3>Stripe Checkout</h3>
+    <p>I den deployede version sendes kurven til backend, som opretter en Stripe Checkout Session og viderestiller til Stripes sikre betalingsside.</p>
+    <p>Endpoint: <code>POST /create-checkout-session</code></p>
+    <button class="btn" onclick="document.getElementById('modalOv').classList.remove('open')">Forstået</button>
+  </div>
+</div>
+
+<!-- AUTH / ACCOUNT MODAL -->
+<div class="modal-ov" id="acctOv">
+  <div class="acct-modal">
+    <div id="authView">
+      <div class="acct-tabs">
+        <button id="tabLogin" class="active" onclick="authTab('login')">Log ind</button>
+        <button id="tabSignup" onclick="authTab('signup')">Opret konto</button>
+      </div>
+      <div class="acct-body">
+        <div class="fld" style="border-top:1px solid var(--navy)"><label for="auEmail">E-mail</label><input id="auEmail" type="email" autocomplete="email"></div>
+        <div class="fld" style="border-bottom:1px solid var(--navy)"><label for="auPass">Adgangskode</label><input id="auPass" type="password" autocomplete="current-password"></div>
+        <button class="btn" id="authGo" onclick="authSubmit()">Log ind <span class="arr">→</span></button>
+        <div class="amsg" id="authMsg" aria-live="polite"></div>
+        <p class="consent">Med en konto kan du se og administrere dine filterabonnementer. Gæstekøb er stadig muligt.</p>
+      </div>
+    </div>
+    <div id="meView" style="display:none">
+      <div class="acct-tabs"><button class="active" style="cursor:default">Min konto</button><button onclick="logout()">Log ud</button></div>
+      <div class="acct-body">
+        <div class="mono" style="color:var(--ink-60);margin-bottom:14px" id="meEmail"></div>
+        <div id="meSubs"><div class="amsg">Henter abonnementer…</div></div>
+        <button class="btn" onclick="openPortal()">Administrér abonnement & betaling <span class="arr">→</span></button>
+        <div class="amsg" id="meMsg" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================= DATA ================= */
+const RATE = 7.46; // EUR->DKK, vejledende
+const products = [
+  {id:'evofilter', name:'EVOfilter', cat:'drikkevand', eur:3451, spec:'Omvendt osmose · 99,9 %', desc:'Patenteret Orbital Osmosis® til krystalklart drikkevand i køkkenet. Konstant ydelse i hele membranens levetid.', specs:[['Filtrering','99,9 %'],['Spildevand','1 : 1'],['Membran','10.000 L'],['Garanti','20 år']], img:'https://evodrop.eu/cdn/shop/files/EVOfilter_frontal_square-01.webp?v=1741170836&width=1360'},
+  {id:'evofilter-plus', name:'EVOfilter plus', cat:'drikkevand', eur:3799, spec:'RO + mineralisering', desc:'EVOfilter med EVOcharge-modul: genopbygger mineraler og giver bergquellefrisk smag.', specs:[['Filtrering','99,9 %'],['Mineraler','Ja'],['Sæt','2 moduler']], img:'https://evodrop.eu/cdn/shop/files/EVOfilter_plus_1000px_square.webp?v=1741171658&width=1360'},
+  {id:'evofilter-premium', name:'EVOfilter premium', cat:'drikkevand', eur:4998, spec:'RO + mineraler + brint', desc:'Det komplette drikkevandssystem: filtrering, mineralisering og brintgenerator.', specs:[['Filtrering','99,9 %'],['Brintvand','Ja'],['Sæt','3 moduler']], img:'https://evodrop.eu/cdn/shop/files/Trinkwassersysteme_EVOfilter_premium.jpg?v=1741098235&width=1360'},
+  {id:'evodescale', name:'EVOdescale', cat:'husvand', eur:2749, spec:'Kalk · 94,2 %', desc:'Saltfri kalkbeskyttelse til hele huset med patenteret æblesyre-teknologi. Beskytter rør, varmelegemer og hvidevarer.', specs:[['Kalkreduktion','94,2 %'],['Salt','Nej'],['Strøm','Nej'],['Materiale','V4A stål']], img:'https://evodrop.eu/cdn/shop/files/EVOadsorb_Gehause-transparent_EVOdescale-Kartusche_square_medium.webp?v=1741172510'},
+  {id:'evoadsorb', name:'EVOadsorb', cat:'husvand', eur:2849, spec:'Kalk + nanofilter', desc:'Kombineret kalkbeskyttelse (op til 80 %) og nanofiltrering mod PFAS, klor, mikroplast og medicinrester.', specs:[['Kalkreduktion','80 %'],['PFAS','Ja'],['Mikroplast','Ja']], img:'https://evodrop.eu/cdn/shop/files/Evodrop_EVOadsorb-Kartusche-1_stehend_ohne-Schatten_square_medium.webp?v=1741172537'},
+  {id:'evosorb', name:'EVOsorb', cat:'husvand', eur:2749, spec:'Nanofilter', desc:'Ren nanofiltrering mod fremmedstoffer i hele husets vand — uden kalkbeskyttelse.', specs:[['Pesticider','Ja'],['Medicinrester','Ja'],['Klor','Ja']], img:'https://evodrop.eu/cdn/shop/files/EVOadsorb-ohneMA_stehend_ohneSchatten_square_medium.webp?v=1741172464'},
+  {id:'evotransform', name:'EVOtransform', cat:'tilbehor', eur:1429, spec:'Vandforfining', desc:'Forfiner vandets struktur og smag. Heliks i håndlavet glas — vedligeholdelsesfri.', specs:[['Vedligehold','Ingen'],['Montering','Inline']], img:'https://evodrop.eu/cdn/shop/files/EVOtransform_stehend-ohne-Schatten_CMYKsquare_medium.webp?v=1741172643'},
+  {id:'evocharge', name:'EVOcharge', cat:'tilbehor', eur:357, spec:'Mineralisering', desc:'Genopbygger værdifulde mineraler i det filtrerede vand.', specs:[['Mineraler','Ca/Mg'],['Montering','Inline']], img:'https://evodrop.eu/cdn/shop/files/EVOcharge-mini_stehend_square-01.webp?v=1741171533&width=1360'},
+  {id:'evobooster', name:'EVObooster', cat:'tilbehor', eur:1649, spec:'Brintgenerator', desc:'Tilfører brintrigt vand med dokumenterede antioxidative egenskaber.', specs:[['Brint','Ja'],['Montering','Inline']], img:'https://evodrop.eu/cdn/shop/files/EVObooster_schraeg_2_square-01.webp?v=1741171558&width=1360'},
+  {id:'rf-evofilter', name:'Reservefilter · EVOfilter', cat:'reservefiltre', eur:597.38, spec:'10.000 L · 4–7 år', desc:'Sikrer konstant filterydelse og vandkvalitet. Skiftes efter 10.000 liter (ca. hvert 4.–7. år) — filteret giver selv et akustisk signal ved 9.500 liter.', specs:[['Kapacitet','10.000 L'],['Interval','4–7 år'],['Varsling','Akustisk']], img:'https://evodrop.eu/cdn/shop/files/EVOfilter_Seite-offen_2_square-01.webp?v=1741170836'},
+  {id:'rf-evoadsorb', name:'Reservefilter · EVOadsorb', cat:'reservefiltre', eur:598, spec:'Membran · 2 nm', desc:'Membranstruktur ti gange mere sugende end almindelige aktivkulfiltre. Konstant gennemstrømning uden tryktab, filtrering ned til 2 nanometer.', specs:[['Filtrering','2 nm'],['Kapacitet','10× aktivt kul'],['Tryktab','Intet']], img:'https://evodrop.eu/cdn/shop/files/Evodrop_EVOadsorb-Kartusche-1_stehend_ohne-Schatten_square.webp?v=1741172537'},
+  {id:'rf-evodescale', name:'Reservefilter · EVOdescale', cat:'reservefiltre', eur:479, spec:'Kalk · skift 1×/år', desc:'Holder kalkbeskyttelsen på 94,2 % — uden salt, strøm eller kemi. Filtrerer tungmetaller og beskytter mod rust, bakterier og vira. Anbefalet skift: én gang om året.', specs:[['Kalkbeskyttelse','94,2 %'],['Interval','1 år'],['Salt/strøm','Nej']], img:'https://evodrop.eu/cdn/shop/files/EVOadsorb_Gehause-transparent_EVOdescale-Kartusche_square.webp?v=1741172510'},
+  {id:'rf-evosorb', name:'Reservefilter · EVOsorb', cat:'reservefiltre', eur:479, spec:'Nanofilter', desc:'Det passende reservefilter til EVOsorb-systemet — opretholder nanofiltreringen mod fremmedstoffer i hele husets vand.', specs:[['Passer til','EVOsorb'],['Type','Nanofilter']], img:'https://evodrop.eu/cdn/shop/files/EVOsorb_Gehause-transparent_EVOsorb-Kartusche_square.webp?v=1741172463'},
+  {id:'rf-evodrink', name:'Reservefilter · EVOdrink', cat:'reservefiltre', eur:165.01, spec:'Aktivt kul · 25.000 L', desc:'Op til 25.000 liter rent drikkevand. Aktivkulfilter med viklet struktur for optimal filtrering — passer til Evodrop® EVOdrink.', specs:[['Kapacitet','25.000 L'],['Type','Aktivt kul'],['Passer til','EVOdrink']], img:'https://evodrop.eu/cdn/shop/files/EVOprime_Kartusche_liegend-seitlich_3a52be7c-b275-4915-a8ca-4533881dfb3a.webp?v=1741284664'},
+  {id:'ew111', name:'Vandhane EW111', cat:'vandhaner', eur:229, spec:'Etvejs', desc:'Enkel etvejshane i børstet finish til det filtrerede vand.', specs:[['Type','Etvejs'],['Finish','Børstet']], img:''},
+  {id:'ew312', name:'Vandhane EW312', cat:'vandhaner', eur:349, spec:'Trevejs', desc:'Koldt, varmt og filtreret vand i én hane.', specs:[['Type','Trevejs'],['Finish','Børstet']], img:''},
+  {id:'ew411', name:'Vandhane EW411', cat:'vandhaner', eur:479, spec:'Firevejs · design', desc:'Designhane med fire udtag i premium finish.', specs:[['Type','Firevejs'],['Finish','Premium']], img:''},
+];
+const fmt = n => new Intl.NumberFormat('da-DK').format(n) + ' kr';
+const dkk = eur => Math.round(eur*RATE);
+let cart = {}; // in-memory
+/* System -> tilhørende årligt filterabonnement (EVOfilter udeladt: skiftes hvert 4.-7. år) */
+const SUBS_MAP = { evodescale:'rf-evodescale', evoadsorb:'rf-evoadsorb', evosorb:'rf-evosorb' };
+let subs = {};  // systemId -> true (abonnement tilvalgt)
+
+/* ================= GAUGE — fully generated, alignment guaranteed ================= */
+const G = { cx:210, cy:205, r:165, min:0, max:30 };
+const gNS = 'http://www.w3.org/2000/svg';
+function gAngle(v){ return Math.PI + (v - G.min)/(G.max - G.min) * Math.PI; } // 180°..360°
+function gPoint(v, r){ const a = gAngle(v); return [G.cx + r*Math.cos(a), G.cy + r*Math.sin(a)]; }
+function gArc(v1, v2, r){
+  const [x1,y1] = gPoint(v1,r), [x2,y2] = gPoint(v2,r);
+  return `M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${r} ${r} 0 0 1 ${x2.toFixed(2)} ${y2.toFixed(2)}`;
+}
+(function buildGauge(){
+  const svg = document.getElementById('gaugeSvg');
+  const el = (tag, attrs) => { const e = document.createElementNS(gNS, tag); for(const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; };
+  // zones (drawn just inside the main arc, same center => always aligned)
+  el('path',{d:gArc(0,8,G.r-8),  stroke:'#3FE3F2', 'stroke-opacity':'.85','stroke-width':'6',fill:'none'});
+  el('path',{d:gArc(8,15,G.r-8), stroke:'#ffffff','stroke-opacity':'.28','stroke-width':'6',fill:'none'});
+  el('path',{d:gArc(15,30,G.r-8),stroke:'#FF8A7E','stroke-opacity':'.9', 'stroke-width':'6',fill:'none'});
+  // main arc
+  el('path',{d:gArc(0,30,G.r), stroke:'rgba(255,255,255,.35)','stroke-width':'1.5',fill:'none'});
+  // ticks: minor every 1, major every 5 — computed from the same center
+  for(let v=0; v<=30; v++){
+    const major = v % 5 === 0;
+    const [x1,y1] = gPoint(v, G.r);
+    const [x2,y2] = gPoint(v, G.r - (major ? 14 : 7));
+    el('line',{x1,y1,x2,y2, stroke: major?'#ffffff':'rgba(255,255,255,.45)', 'stroke-width': major?2:1.2});
+  }
+  // numerals at majors, just outside the arc
+  for(let v=0; v<=30; v+=5){
+    const [x,y] = gPoint(v, G.r + 16);
+    const t = el('text',{x:x.toFixed(1), y:(y+4).toFixed(1), 'text-anchor':'middle',
+      fill:'rgba(255,255,255,.65)','font-family':"'IBM Plex Mono',monospace",'font-size':'11'});
+    t.textContent = v === 30 ? '30 °dH' : v;
+  }
+  // needle (drawn pointing straight up; rotated via CSS transform)
+  el('line',{id:'needle', class:'g-needle', x1:G.cx, y1:G.cy, x2:G.cx, y2:G.cy - (G.r - 34)});
+  el('circle',{cx:G.cx, cy:G.cy, r:7, fill:'#3FE3F2'});
+  el('circle',{cx:G.cx, cy:G.cy, r:3, fill:'#062336'});
+})();
+function setGauge(dh){
+  const v = Math.min(Math.max(dh, G.min), G.max);
+  const deg = -90 + (v - G.min)/(G.max - G.min) * 180; // -90 = left (0), +90 = right (30)
+  document.getElementById('needle').style.transform = `rotate(${deg}deg)`;
+}
+setGauge(0);
+
+/* ================= HARDNESS LOOKUP (vejledende) ================= */
+const HARD = [
+  {re:/^1\d{3}$|^2\d{3}$/, area:'København & omegn', dh:21},
+  {re:/^3\d{3}$/,          area:'Nordsjælland',      dh:19},
+  {re:/^4\d{3}$/,          area:'Sjælland & øer',    dh:20},
+  {re:/^5\d{3}$/,          area:'Fyn',               dh:16},
+  {re:/^6\d{3}$/,          area:'Syd- & Sønderjylland', dh:12},
+  {re:/^7\d{3}$/,          area:'Vestjylland',       dh:9},
+  {re:/^8\d{3}$/,          area:'Østjylland',        dh:14},
+  {re:/^9\d{3}$/,          area:'Nordjylland',       dh:12},
+];
+function verdictFor(dh){
+  if(dh<8)  return {v:'Blødt vand', n:'Lav kalkbelastning — fokus på filtrering', hard:false};
+  if(dh<15) return {v:'Middelhårdt', n:'Mærkbar kalk i kedler og brusere', hard:false};
+  if(dh<22) return {v:'Hårdt vand', n:'Kalk belaster rør og varmelegemer', hard:true};
+  return {v:'Meget hårdt', n:'Høj kalkbelastning i hele huset', hard:true};
+}
+function readZip(){
+  const z = document.getElementById('zipIn').value.trim();
+  const hit = HARD.find(h=>h.re.test(z));
+  const elV=document.getElementById('dhVal'), elA=document.getElementById('dhArea'),
+        elVer=document.getElementById('dhVerdict'), elN=document.getElementById('dhNote');
+  if(!/^\d{4}$/.test(z) || !hit){
+    elV.textContent='—'; elA.textContent='Ugyldigt postnummer'; elVer.textContent='—';
+    elVer.className=''; elN.textContent='Indtast 4 cifre, fx 4000'; setGauge(0); return;
+  }
+  const w = verdictFor(hit.dh);
+  setGauge(hit.dh);
+  elV.textContent = hit.dh.toLocaleString('da-DK');
+  elA.textContent = hit.area;
+  elVer.textContent = w.v; elVer.className = w.hard?'hard':'';
+  elN.textContent = w.n;
+}
+document.getElementById('zipIn').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();readZip();}});
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  setTimeout(()=>setGauge(20),600); setTimeout(()=>setGauge(0),2000);
+}
+
+/* ================= STAGE STRIP (photos under schematic) ================= */
+(function(){
+  const strip = document.getElementById('stageStrip');
+  const stages = [
+    {id:'evodescale', st:'Trin 1 — Hele huset', cap:'Saltfri kalkbeskyttelse'},
+    {id:'evoadsorb',  st:'Trin 2 — Hele huset', cap:'Nanofiltrering'},
+    {id:'evofilter',  st:'Trin 3 — Køkkenet',  cap:'Orbital Osmosis®'},
+  ];
+  strip.innerHTML = stages.map(s=>{
+    const p = products.find(x=>x.id===s.id);
+    return `<div class="stage" onclick="document.getElementById('katalog').scrollIntoView({behavior:'smooth'})" role="link" tabindex="0">
+      <div class="img"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.remove()"></div>
+      <div class="t"><div class="st">${s.st}</div><h4>${p.name}</h4><span>${s.cap} · ${fmt(dkk(p.eur))}</span></div>
+    </div>`;
+  }).join('');
+  strip.querySelectorAll('.stage').forEach(s=>s.addEventListener('keydown',e=>{if(e.key==='Enter')s.click();}));
+})();
+
+/* ================= CATALOGUE ================= */
+const grid = document.getElementById('products');
+function renderProducts(cat='all'){
+  grid.innerHTML='';
+  products.filter(p=>cat==='all'||p.cat===cat).forEach((p,i)=>{
+    const row = document.createElement('div');
+    row.className='row';
+    const catName = {drikkevand:'Drikkevand',husvand:'Husvand',reservefiltre:'Reservefiltre',tilbehor:'Tilbehør',vandhaner:'Vandhaner'}[p.cat];
+    row.innerHTML = `
+      <div class="row-head" role="button" tabindex="0" aria-expanded="false">
+        <div class="idx">${String(i+1).padStart(2,'0')}</div>
+        <div class="th">${p.img?`<img src="${p.img}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${p.name.split(' ').pop()}'}))">`:`<span>${p.name.split(' ').pop()}</span>`}</div>
+        <h3>${p.name}</h3>
+        <div class="catg">${catName}</div>
+        <div class="spec">${p.spec}</div>
+        <div class="pr">${fmt(dkk(p.eur))}<small>inkl. moms</small></div>
+        <button class="add" aria-label="Læg ${p.name} i kurv">+</button>
+      </div>
+      <div class="row-body">
+        <div class="ph">${p.img?`<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fb',textContent:'Foto: officiel EVODROP-asset'}))">`:`<div class="fb">Foto: officiel EVODROP-asset</div>`}</div>
+        <div>
+          <p>${p.desc}</p>
+          <div class="specs">${p.specs.map(s=>`<div>${s[0]}<b>${s[1]}</b></div>`).join('')}</div>
+        </div>
+      </div>`;
+    const head = row.querySelector('.row-head');
+    head.addEventListener('click',e=>{
+      if(e.target.closest('.add'))return;
+      row.classList.toggle('open');
+      head.setAttribute('aria-expanded', row.classList.contains('open'));
+    });
+    head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();head.click();}});
+    row.querySelector('.add').addEventListener('click',()=>addToCart(p.id));
+    grid.appendChild(row);
+  });
+}
+renderProducts();
+document.getElementById('filters').addEventListener('click',e=>{
+  const t=e.target.closest('.tab'); if(!t)return;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); renderProducts(t.dataset.cat);
+});
+
+/* ================= CART ================= */
+function addToCart(id){ cart[id]=(cart[id]||0)+1; updateCart(); openCart(); }
+function changeQty(id,d){ cart[id]=(cart[id]||0)+d; if(cart[id]<=0)delete cart[id]; updateCart(); }
+function removeItem(id){ delete cart[id]; updateCart(); }
+function updateCart(){
+  const ids=Object.keys(cart);
+  // ryd abonnementer hvis systemet er fjernet fra kurven
+  Object.keys(subs).forEach(sid=>{ if(!cart[sid]) delete subs[sid]; });
+  document.getElementById('cartCount').textContent = ids.reduce((s,i)=>s+cart[i],0);
+  const body=document.getElementById('drawerBody'), foot=document.getElementById('drawerFoot');
+  if(!ids.length){ body.innerHTML='<div class="empty">Kurven er tom</div>'; foot.style.display='none'; return; }
+  foot.style.display='block';
+  let oneOff=0, yearly=0, html='';
+  ids.forEach(id=>{
+    const p=products.find(x=>x.id===id); oneOff += dkk(p.eur)*cart[id];
+    html += `<div class="cl">
+      <div class="ci">${p.img?`<img src="${p.img}" alt="" onerror="this.remove()">`:''}</div>
+      <h4>${p.name}</h4><div class="p">${fmt(dkk(p.eur))}</div>
+      <div class="q">
+        <button onclick="changeQty('${id}',-1)" aria-label="Færre">−</button>
+        <span class="n">${cart[id]}</span>
+        <button onclick="changeQty('${id}',1)" aria-label="Flere">+</button>
+      </div>
+      <button class="rm" onclick="removeItem('${id}')">Fjern</button>
+    </div>`;
+    // tilvalgt abonnementslinje
+    if(subs[id]){
+      const f=products.find(x=>x.id===SUBS_MAP[id]);
+      const amt=dkk(f.eur)*cart[id];
+      yearly += amt;
+      html += `<div class="cl subline">
+        <div class="ci">${f.img?`<img src="${f.img}" alt="" onerror="this.remove()">`:''}</div>
+        <h4>↻ ${f.name}</h4><div class="p">${fmt(amt)}<small>pr. år · ×${cart[id]}</small></div>
+        <div class="q"><span class="n mono" style="font-size:9.5px;color:var(--aqua-deep)">Årligt abonnement</span></div>
+        <button class="rm" onclick="toggleSub('${id}')">Fjern</button>
+      </div>`;
+    }
+  });
+  // forslag: systemer i kurven uden tilvalgt abonnement
+  ids.filter(id=>SUBS_MAP[id] && !subs[id]).forEach(id=>{
+    const p=products.find(x=>x.id===id);
+    const f=products.find(x=>x.id===SUBS_MAP[id]);
+    html += `<div class="sug">
+      <div class="t"><b>Anbefalet til ${p.name}</b><span class="pr">${fmt(dkk(f.eur))}/år</span></div>
+      <h5>↻ ${f.name}</h5>
+      <p>Automatisk nyt filter hvert år — fuld ydelse, intet at huske. Opsig når som helst.</p>
+      <button onclick="toggleSub('${id}')">Tilføj årligt filterabonnement</button>
+    </div>`;
+  });
+  body.innerHTML = html;
+  let sums = `<div class="sumr"><span>Subtotal</span><span>${fmt(oneOff)}</span></div>
+              <div class="sumr"><span>Fragt</span><span>0 kr</span></div>`;
+  if(yearly>0){
+    sums += `<div class="sumr"><span>Filterabonnement (1. år)</span><span>${fmt(yearly)}</span></div>
+             <div class="sumr tot"><span>Total i dag</span><b>${fmt(oneOff+yearly)}</b></div>
+             <div class="sumr" style="color:var(--aqua-deep)"><span>Herefter</span><span>${fmt(yearly)}/år</span></div>`;
+  }else{
+    sums += `<div class="sumr tot"><span>Total</span><b>${fmt(oneOff)}</b></div>`;
+  }
+  document.getElementById('sumArea').innerHTML = sums;
+}
+function toggleSub(systemId){
+  if(subs[systemId]) delete subs[systemId]; else subs[systemId]=true;
+  updateCart();
+}
+function openCart(){document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open');}
+function closeCart(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');}
+
+/* ================= CHECKOUT (engangskøb + abonnementer i ét flow) ================= */
+async function checkout(){
+  if(!Object.keys(cart).length)return;
+  const items=Object.keys(cart).map(id=>({id,qty:cart[id]}));
+  const subscriptions=Object.keys(subs).map(sysId=>({id:SUBS_MAP[sysId], qty:cart[sysId]||1}));
+  const btn=document.querySelector('#drawerFoot .btn');
+  const orig=btn.innerHTML; btn.innerHTML='Åbner betaling…'; btn.disabled=true;
+  try{
+    const headers={'Content-Type':'application/json'};
+    const tok=await authToken(); if(tok) headers['Authorization']='Bearer '+tok;
+    const r=await fetch('/create-checkout-session',{method:'POST',headers,body:JSON.stringify({items,subscriptions})});
+    if(!r.ok)throw new Error('Server '+r.status);
+    const data=await r.json();
+    if(data.url){window.location.href=data.url;return;}
+    throw new Error(data.error||'Ukendt fejl');
+  }catch(err){
+    btn.innerHTML=orig; btn.disabled=false; closeCart();
+    document.getElementById('modalOv').classList.add('open');
+  }
+}
+document.getElementById('modalOv').addEventListener('click',e=>{if(e.target.id==='modalOv')e.currentTarget.classList.remove('open')});
+
+/* ================= AUTH (Supabase) ================= */
+let sb=null, sbUser=null, authMode='login';
+(async function initAuth(){
+  try{
+    const cfg = await (await fetch('/api/config')).json();
+    if(!cfg.authEnabled) return; // gæstetilstand — knappen forklarer det
+    await new Promise((res,rej)=>{ // load supabase-js fra CDN
+      const s=document.createElement('script');
+      s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+      s.onload=res; s.onerror=rej; document.head.appendChild(s);
+    });
+    sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+    const {data:{session}} = await sb.auth.getSession();
+    setUser(session?.user||null);
+    sb.auth.onAuthStateChange((_e,s)=>setUser(s?.user||null));
+  }catch(e){ /* ingen backend (preview) — gæstetilstand */ }
+})();
+async function authToken(){
+  if(!sb) return null;
+  const {data:{session}} = await sb.auth.getSession();
+  return session?.access_token||null;
+}
+function setUser(u){
+  sbUser=u;
+  document.getElementById('acctBtn').textContent = u ? 'Min konto' : 'Log ind';
+}
+function openAccount(){
+  if(!sb && !sbUser){
+    // auth ikke konfigureret endnu (eller preview): vis info i login-form
+    document.getElementById('acctOv').classList.add('open');
+    document.getElementById('authMsg').className='amsg';
+    document.getElementById('authMsg').textContent= sb? '' : 'Konto kræver Supabase-opsætning (se README) — gæstekøb virker.';
+  } else {
+    document.getElementById('acctOv').classList.add('open');
+  }
+  const me = !!sbUser;
+  document.getElementById('authView').style.display = me?'none':'block';
+  document.getElementById('meView').style.display = me?'block':'none';
+  if(me){ document.getElementById('meEmail').textContent = sbUser.email; loadSubs(); }
+}
+document.getElementById('acctOv').addEventListener('click',e=>{if(e.target.id==='acctOv')e.currentTarget.classList.remove('open')});
+function authTab(m){
+  authMode=m;
+  document.getElementById('tabLogin').classList.toggle('active',m==='login');
+  document.getElementById('tabSignup').classList.toggle('active',m==='signup');
+  document.getElementById('authGo').innerHTML=(m==='login'?'Log ind':'Opret konto')+' <span class="arr">→</span>';
+  document.getElementById('auPass').autocomplete = m==='login'?'current-password':'new-password';
+}
+async function authSubmit(){
+  const msg=document.getElementById('authMsg');
+  if(!sb){msg.className='amsg err';msg.textContent='Auth er ikke konfigureret på serveren endnu.';return;}
+  const email=document.getElementById('auEmail').value.trim();
+  const password=document.getElementById('auPass').value;
+  if(!email||password.length<6){msg.className='amsg err';msg.textContent='Angiv e-mail og kode på mindst 6 tegn.';return;}
+  msg.className='amsg';msg.textContent='Et øjeblik…';
+  const fn = authMode==='login' ? sb.auth.signInWithPassword({email,password}) : sb.auth.signUp({email,password});
+  const {data,error} = await fn;
+  if(error){msg.className='amsg err';msg.textContent=error.message;return;}
+  if(authMode==='signup' && !data.session){
+    msg.className='amsg ok';msg.textContent='Konto oprettet — bekræft din e-mail og log ind.';return;
+  }
+  msg.className='amsg ok';msg.textContent='Logget ind.';
+  openAccount();
+}
+async function logout(){ if(sb) await sb.auth.signOut(); setUser(null); openAccount(); }
+async function loadSubs(){
+  const box=document.getElementById('meSubs');
+  const tok=await authToken();
+  if(!tok){box.innerHTML='';return;}
+  try{
+    const r=await fetch('/api/me/subscriptions',{headers:{'Authorization':'Bearer '+tok}});
+    const d=await r.json();
+    if(!d.subscriptions || !d.subscriptions.length){
+      box.innerHTML='<div class="amsg">Ingen aktive filterabonnementer endnu.</div>';return;
+    }
+    box.innerHTML = d.subscriptions.map(s=>{
+      const date = s.current_period_end? new Date(s.current_period_end*1000).toLocaleDateString('da-DK'):'';
+      const st = s.status==='active' ? (s.cancel_at_period_end?'Opsagt — udløber':'Aktivt') : s.status;
+      return `<div class="subrow">
+        <span class="st ${s.status==='active'&&!s.cancel_at_period_end?'active':'off'}">${st}</span>
+        <h5>↻ Filterabonnement</h5>
+        <span>${fmt(s.amount)} / ${s.interval==='year'?'år':s.interval} · næste: ${date}</span>
+      </div>`;
+    }).join('');
+  }catch(e){ box.innerHTML='<div class="amsg err">Kunne ikke hente abonnementer.</div>'; }
+}
+async function openPortal(){
+  const msg=document.getElementById('meMsg');
+  const tok=await authToken();
+  if(!tok){msg.className='amsg err';msg.textContent='Log ind først.';return;}
+  msg.className='amsg';msg.textContent='Åbner Stripe-portal…';
+  try{
+    const r=await fetch('/create-portal-session',{method:'POST',headers:{'Authorization':'Bearer '+tok}});
+    const d=await r.json();
+    if(d.url){window.location.href=d.url;return;}
+    throw new Error(d.detail||'fejl');
+  }catch(e){msg.className='amsg err';msg.textContent='Kunne ikke åbne portalen — har du gennemført et køb?';}
+}
+
+/* ================= SIGNUP (same backend contract) ================= */
+async function submitSignup(){
+  const name=document.getElementById('suName').value.trim();
+  const email=document.getElementById('suEmail').value.trim();
+  const zip=document.getElementById('suZip').value.trim();
+  const msg=document.getElementById('suMsg');
+  const valid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if(!name||!valid){msg.className='fmsg err';msg.textContent='Udfyld navn og en gyldig e-mail.';return;}
+  msg.className='fmsg';msg.textContent='Sender…';
+  try{ await fetch('/api/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,zip})}); }catch(e){}
+  msg.className='fmsg ok';msg.textContent='Modtaget. Du hører fra os inden for 24 timer.';
+  ['suName','suEmail','suZip'].forEach(i=>document.getElementById(i).value='');
+}
+
+/* ================= NAV: in-page scroll (sandbox-safe) ================= */
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="#"]'); if(!a)return;
+  e.preventDefault();
+  const id=a.getAttribute('href').slice(1);
+  const el=id?document.getElementById(id):null;
+  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+  else window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ================= REVEAL ================= */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
